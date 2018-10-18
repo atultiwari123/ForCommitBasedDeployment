@@ -222,7 +222,7 @@ if grep -q "^src" project-manifest-$2.txt ; then
 		echo "src/aura" > auralist.txt
 		for i in `cat aura.txt`;
 		do
-			cd ..
+			cd..
 			echo "src/aura/$i" >> scripts/auralist.txt
 			ls -R src/aura/$i/* >> scripts/auralist.txt
 			cd -
