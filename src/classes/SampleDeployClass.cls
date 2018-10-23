@@ -17,6 +17,6 @@ public class SampleDeployClass {
     }
     
     public static void helloMethod() {
-        System.debug('Hello World This is a test for commit based deployment and rahul is leaving for the home hello everyone');
+        System.debug('Hello World This is a test for commit based deployment and rahul is leaving for the home hello everyone i waant to see the things working');
     }
 }
