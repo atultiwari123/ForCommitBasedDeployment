@@ -64,25 +64,26 @@ node {
                  	
         } 
 
-        stage('Push To Test Org') 
+        stage('Push To dev Org') 
         {
-            rc = sh returnStatus: true, script: "'${toolbelt}/sfdx' force:source:push --targetusername ${SCRATCH_ORG_USER_NAME}"
+            rc = sh returnStatus: true, script: "'${toolbelt}/sfdx' force:mdapi:deploy -d src -u atul123@cognizant.com"
             
             if (rc != 0) 
             {
                 error 'push to CI scratch org failed'
             }
+	}
             
             // assign permission set
-            rc = sh returnStatus: true, script: "'${toolbelt}/sfdx' force:user:permset:assign --targetusername ${SCRATCH_ORG_USER_NAME} --permsetname ${PERMISSION_SET}"
+           /* rc = sh returnStatus: true, script: "'${toolbelt}/sfdx' force:user:permset:assign --targetusername ${SCRATCH_ORG_USER_NAME} --permsetname ${PERMISSION_SET}"
             
             if (rc != 0) 
             {
                 error 'permission set assignment failed'
-            }
-        }
+            }*/
+        
 
-       stage('Run Apex Test') 
+       /*stage('Run Apex Test') 
         {
             sh "mkdir -p ${RUN_ARTIFACT_DIR}"
             timeout(time: 120, unit: 'SECONDS') 
@@ -97,7 +98,7 @@ node {
 
         stage('collect results') 
         {
-            junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
+            junit keepLongStdio: true, testResults: 'tests/**-junit.xml'*/
             
            // rc = sh returnStatus: true, script: "'${toolbelt}/sfdx'  force:apex:test:report -i 707p000000UxELL --resultformat human"
         }
@@ -111,7 +112,7 @@ node {
                 error 'Open of CI Scratch org failed'
             }
         }
-        */
+        
         stage('Delete Test Org') 
         {
 
@@ -126,6 +127,6 @@ node {
 	             }
 	        
         }
-    }
+    }*/
     }
 }
