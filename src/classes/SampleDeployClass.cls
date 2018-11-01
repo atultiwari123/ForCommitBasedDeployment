@@ -18,5 +18,6 @@ public class SampleDeployClass {
     
     public static void helloMethod() {
         System.debug('Hello World This is a test for commit based deployment and rahul is leaving for the home are u planning to go to home yeah i am too leaving are you also coming');
+       System.debug('now a new line is added'); 
     }
 }
