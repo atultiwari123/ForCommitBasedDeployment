@@ -23,8 +23,8 @@ node {
     
     def CONNECTED_APP_CONSUMER_KEY="3MVG9YDQS5WtC11rr3LKF.4EvLv0hnFRV9AgKmMnZWbSs9gWEiUjNYc.h74gM.8KeUkWvkzKHiCuNBLVfFaVI"
     def JWT_CRED_ID_DH = env.JWT_CRED_ID_DH   
-    def SFDC_LOGIN_URL = "https://login.salesforce.com"
-    def HUB_ORG_DH="onemoredevhub@cognizant.com"
+    def SFDC_LOGIN_URL = 
+    def HUB_ORG_DH=
   
    
 
@@ -39,7 +39,7 @@ node {
         stage('Authorize hub org and set default CI scratch org') 
         {
 			
-			rc = sh returnStatus: true, script: "sfdx force:auth:jwt:grant --clientid 3MVG9YDQS5WtC11rr3LKF.4EvLv0hnFRV9AgKmMnZWbSs9gWEiUjNYc.h74gM.8KeUkWvkzKHiCuNBLVfFaVI --username onemoredevhub@cognizant.com --jwtkeyfile '${jwt_key_file}' --setdefaultdevhubusername --instanceurl https://login.salesforce.com"
+			rc = sh returnStatus: true, script: "sfdx force:auth:jwt:grant --clientid 3MVG9YDQS5WtC11rr3LKF.4EvLv0hnFRV9AgKmMnZWbSs9gWEiUjNYc.h74gM.8KeUkWvkzKHiCuNBLVfFaVI --username --jwtkeyfile '${jwt_key_file}' --setdefaultdevhubusername --instanceurl "
            
             if (rc != 0) { error 'hub org authorization failed ' }	
             
@@ -66,7 +66,7 @@ node {
 
         stage('Push To dev Org') 
         {
-            rc = sh returnStatus: true, script: "'${toolbelt}/sfdx' force:mdapi:deploy -d src -u atul123@cognizant.com"
+            rc = sh returnStatus: true, script: "'${toolbelt}/sfdx' force:mdapi:deploy -d src -u "
             
             if (rc != 0) 
             {
